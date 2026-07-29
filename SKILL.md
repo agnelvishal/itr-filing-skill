@@ -1,19 +1,35 @@
 ---
 name: itr-filing-skill
-description: >
-  End-to-end assistant for filing Indian Income Tax Returns (ITR-1/2/3/4) for any assessment year.
-  Takes a user from raw documents (Form 16, AIS, Form 26AS, broker tax P&L, payslips, bank statements)
-  to a fully reconciled, schedule-by-schedule computation and a portal-ready data pack — including
-  form selection, old-vs-new regime comparison, multi-employer salary, capital gains (equity/debt/property/crypto),
-  F&O and business income, audit applicability, loss set-off and carry-forward, foreign assets/income,
-  advance-tax interest (234A/B/C), and verification of a drafted/uploaded ITR JSON.
-  Use this skill whenever the user mentions ITR, income tax return, tax filing in India, Form 16, Form 26AS,
-  AIS, TIS, e-filing portal, incometax.gov.in, tax regime choice, F&O taxes, capital gains tax, TDS mismatch,
-  advance tax, self-assessment tax, refund, or asks "help me with my taxes" in an Indian context —
-  even if they only ask a small sub-question, because the answer usually depends on their full income picture.
+description: End-to-end assistant for filing Indian Income Tax Returns (ITR-1/2/3/4) for any assessment year from raw documents to reconciled data packs.
+version: 1.0.0
+author: Community
+license: MIT
+platforms: [macos, linux, windows]
+metadata:
+  hermes:
+    tags: [Tax, Finance, India, ITR, IncomeTax]
 ---
 
 # ITR Filing (India)
+
+End-to-end assistant for filing Indian Income Tax Returns (ITR-1/2/3/4) for any assessment year.
+Takes a user from raw documents (Form 16, AIS, Form 26AS, broker tax P&L, payslips, bank statements)
+to a fully reconciled, schedule-by-schedule computation and a portal-ready data pack.
+
+## When to Use
+
+Use this skill whenever the user:
+
+- Mentions ITR, income tax return, tax filing in India, Form 16, Form 26AS, AIS, TIS, e-filing portal (`incometax.gov.in`).
+- Asks about tax regime choice (old vs. new regime), F&O taxes, capital gains tax, TDS mismatch, advance tax, self-assessment tax, or tax refunds.
+- Asks "help me with my taxes" in an Indian context — even for a small sub-question, since the answer usually depends on their full income picture.
+
+## Prerequisites & Dependencies
+
+- **Core Skill**: Standard LLM instructions + reference markdown files. No special tools required.
+- **Optional AIS Decryption Script (`scripts/decrypt_ais.py`)**:
+  - Requires Python 3 and the `pycryptodome` library (`pip install pycryptodome`).
+  - _Note on Python/Pip_: If Python/pip is unavailable or restricted in your environment, **this script can be safely skipped**. AIS decryption is only needed if the user inputs an encrypted AIS utility JSON file directly. Users can alternatively provide decrypted AIS JSON/PDF or paste data directly.
 
 You are acting as a meticulous Indian tax preparer. The user gives you raw documents and plain-language
 answers; you do all the technical work. Three principles govern everything:
@@ -60,7 +76,8 @@ then decide ITR-1/2/3/4 and provisional regime. One income source can force the 
 
 Read `references/02-documents-and-parsing.md`.
 Give the user a tailored checklist (only what their profile needs). If the user needs help downloading their AIS/TIS from the income tax portal, provide the step-by-step portal visual guide (Route A/B, Compliance Portal redirection, format selection JSON+PDF, and PDF/JSON password decryption).
-Parse everything provided: Form 16 PDFs, AIS JSON (use `scripts/decrypt_ais.py` if encrypted), broker tax P&L workbooks, payslips.
+Parse everything provided: Form 16 PDFs, AIS JSON (use `${HERMES_SKILL_DIR}/scripts/decrypt_ais.py` if encrypted and Python with `pycryptodome` is available), broker tax P&L workbooks, payslips.
+Extract into a working ledger with per-source figures.ker tax P&L workbooks, payslips.
 Extract into a working ledger with per-source figures.
 
 ### Phase 3 — Reconcile
