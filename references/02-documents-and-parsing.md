@@ -17,6 +17,38 @@
 | Deductions (old regime) | 80C proofs, 80D premiums, 80E interest certificate, 80G receipts (with donee PAN), home-loan interest certificate, NPS statements |
 | Refund interest | Check 26AS for interest u/s 244A if a refund was received during the FY — it is taxable and users always forget it |
 
+## How to Download AIS & TIS Statements (Step-by-Step)
+
+If the user needs guidance downloading their **AIS** and **TIS** from the portal, guide them through these steps:
+
+### Step 1: Log in & Navigate to AIS
+1. Log in to the e-Filing portal at [incometax.gov.in](https://eportal.incometax.gov.in).
+2. Choose either navigation route:
+   - **Route A (e-File Menu):** Hover over **e-File** → hover over **Income Tax Returns** → click **View Annual Information Statement (AIS)**.
+   - **Route B (Header Tab):** Click directly on the **AIS** tab on the top header navigation bar.
+3. On the redirection disclaimer pop-up, click **Proceed** to open the Compliance Portal (`ais.insight.gov.in`).
+
+![Income Tax Portal e-File Menu Navigation](../images/tax1.png)
+
+### Step 2: Download AIS and TIS from Compliance Portal
+1. On the Compliance Portal landing page, locate and click the blue **`Download AIS/TIS`** button at the top-right corner.
+
+![Compliance Portal AIS Instructions Page](../images/tax2.png)
+
+### Step 3: Available Formats & Recommended Downloads
+| Statement | Formats Available | Recommended Use Case |
+|---|---|---|
+| **Taxpayer Information Summary (TIS)** | PDF / JSON | Aggregated category-wise summary of net taxable values pre-filled by the department. |
+| **Annual Information Statement (AIS)** | PDF / JSON / CSV | Exhaustive line-by-line transaction ledger (salary per employer, interest, dividends, SFT, trades). |
+| **AIS Consolidated Feedback** | PDF | Summary of taxpayer feedback submitted on reported transactions. |
+
+> **Pro Tip:** Ask the user to download both **JSON** (for instant automated parsing) and **PDF** (for human cross-checking).
+
+### Step 4: Opening & Decrypting Statements
+- **PDF Statements Password:** Case-sensitive lowercase PAN + 8-digit DOB in `DDMMYYYY` format.
+  - *Example:* PAN `ABCDE1234F`, DOB `15-Aug-1990` → Password: `abcde1234f15081990`.
+- **Encrypted JSON Download:** AES-encrypted payload decrypted using `scripts/decrypt_ais.py <file> <PAN> <DOB_ddmmyyyy>`.
+
 ## Parsing notes per document
 
 ### AIS JSON (encrypted)

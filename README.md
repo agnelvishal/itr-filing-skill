@@ -9,6 +9,7 @@ An AI agent skill (compatible with Hermes Agent and Claude Code) that takes a us
 - Capital gains (equity/debt/property/gold/crypto-VDA), F&O & business income, audit applicability
 - Loss set-off + carry-forward (CYLA/BFLA/CFL, prior-year ITR parsing, Schedule UD)
 - Foreign assets/income (Schedule FA/FSI/TR, Form 67)
+- Step-by-step AIS/TIS portal download guidance with visual portal navigation screenshots
 - Interest 234A/B/C, AIS/26AS reconciliation, verification of a drafted portal JSON
 - **Output boundary: the annotated data-pack JSON.** Portal data entry is intentionally out of scope.
 
@@ -47,7 +48,8 @@ git clone https://github.com/agnelvishal/itr-filing-skill.git ~/.claude/skills/i
 ## Layout
 
 - `SKILL.md` — 8-phase workflow orchestrator
-- `references/01–10` — per-domain depth, loaded lazily by profile
+- `references/01–10` — per-domain depth, loaded lazily by profile (including step-by-step AIS/TIS download guide)
+- `images/` — visual screenshots for income tax portal navigation and downloads
 - `scripts/decrypt_ais.py` — decrypts the portal's encrypted AIS JSON (PAN + DOB)
 
 ## Disclaimer
