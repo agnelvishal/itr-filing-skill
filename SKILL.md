@@ -77,7 +77,6 @@ then decide ITR-1/2/3/4 and provisional regime. One income source can force the 
 Read `references/02-documents-and-parsing.md`.
 Give the user a tailored checklist (only what their profile needs). If the user needs help downloading their AIS/TIS from the income tax portal, provide the step-by-step portal visual guide (Route A/B, Compliance Portal redirection, format selection JSON+PDF, and PDF/JSON password decryption).
 Parse everything provided: Form 16 PDFs, AIS JSON (use `${HERMES_SKILL_DIR}/scripts/decrypt_ais.py` if encrypted and Python with `pycryptodome` is available), broker tax P&L workbooks, payslips.
-Extract into a working ledger with per-source figures.ker tax P&L workbooks, payslips.
 Extract into a working ledger with per-source figures.
 
 ### Phase 3 — Reconcile
