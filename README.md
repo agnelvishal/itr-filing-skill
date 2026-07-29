@@ -1,8 +1,6 @@
-# itr-filing-skill — Claude Code skill for Indian Income Tax Returns (ITR-1/2/3/4)
+# itr-filing-skill — Hermes & Claude Code Skill for Indian Income Tax Returns (ITR-1/2/3/4)
 
-A Claude Code skill that takes a user from raw documents (Form 16, AIS, Form 26AS, broker Tax P&L,
-payslips) to a fully reconciled, schedule-by-schedule computation and a **portal-ready data-pack JSON**
-— designed to be handed to another agent (or a human) that fills the e-filing portal.
+An AI agent skill (compatible with Hermes Agent and Claude Code) that takes a user from raw documents (Form 16, AIS, Form 26AS, broker Tax P&L, payslips) to a fully reconciled, schedule-by-schedule computation and a **portal-ready data-pack JSON** — designed to be handed to another agent (or a human) that fills the e-filing portal.
 
 ## Scope
 
@@ -20,10 +18,30 @@ recording them in a `rules_verification` block in the output.
 
 ## Install
 
+### Prerequisites
+
 ```bash
-git clone https://github.com/agnelvishal/itr-filing-skill.git ~/.claude/skills/itr-filing-skill
 pip install pycryptodome   # for scripts/decrypt_ais.py (AIS JSON decryption)
-Claude chrome agent for filing
+```
+
+### Install for Hermes Agent
+
+**Option 1: Git Clone**
+```bash
+mkdir -p ~/.hermes/skills/productivity/itr-filing-skill
+git clone https://github.com/agnelvishal/itr-filing-skill.git ~/.hermes/skills/productivity/itr-filing-skill
+```
+
+**Option 2: Hermes CLI**
+```bash
+hermes skills install agnelvishal/itr-filing-skill --yes
+```
+
+### Install for Claude Code
+
+```bash
+mkdir -p ~/.claude/skills/itr-filing-skill
+git clone https://github.com/agnelvishal/itr-filing-skill.git ~/.claude/skills/itr-filing-skill
 ```
 
 ## Layout
